@@ -39,7 +39,7 @@ SECRET_KEY = 'django-insecure-ja=c@jfw0@r5^$_cb01nh(k+jd@b*afd)b6b$coza)8^l6&)ec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-gj1p42gjdh1.ws-eu105.gitpod.io']
 
 
 # Application definition
@@ -50,10 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+
+     'profiles',
 ]
 
 MIDDLEWARE = [
