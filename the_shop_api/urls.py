@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('properties.urls')),
     path('', include('inquiries.urls')),
     path('', include('prospectivebuyers.urls')),
+    path('', include('sales.urls')),
     path('', include('pictures.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ]
