@@ -14,6 +14,8 @@ class PropertySerializer(serializers.ModelSerializer):
     sold_id = serializers.SerializerMethodField()
     prospectivebuyer_id = serializers.SerializerMethodField()
     picture_id = serializers.SerializerMethodField()
+    prospectivebuyer_count = serializers.ReadOnlyField()
+    inquiries_count = serializers.ReadOnlyField()
 
 
     def validate_image(self, value):
@@ -68,7 +70,8 @@ class PropertySerializer(serializers.ModelSerializer):
             'price', 'size', 'location', 'num_rooms', 'status',
             'sold_date', 'property_type', 'num_interests',
             'image', 'image_filter', 'sold_id', 'prospectivebuyer_id',
-            'picture_id'
+            'picture_id', 'prospectivebuyer_count',
+            'inquiries_count'
         ]
 
 
