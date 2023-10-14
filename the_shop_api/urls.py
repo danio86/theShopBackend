@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('profiles.urls')),
     path('', include('properties.urls')),
     path('', include('inquiries.urls')),
+    path('', include('prospectivebuyers.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ]

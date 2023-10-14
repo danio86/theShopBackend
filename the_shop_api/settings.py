@@ -58,6 +58,7 @@ INSTALLED_APPS = [
      'profiles',
      'properties',
      'inquiries',
+     'prospectivebuyers',
 ]
 
 MIDDLEWARE = [
