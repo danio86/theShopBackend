@@ -39,7 +39,7 @@ SECRET_KEY = 'django-insecure-ja=c@jfw0@r5^$_cb01nh(k+jd@b*afd)b6b$coza)8^l6&)ec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-dovqm50m2zm.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-tylmj0v0yog.ws-eu105.gitpod.io']
 
 
 # Application definition
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
      'profiles',
      'properties',
+     'inquiries',
 ]
 
 MIDDLEWARE = [
