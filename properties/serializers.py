@@ -1,5 +1,9 @@
 from rest_framework import serializers
 from properties.models import Property
+from sales.models import Sold
+from prospectivebuyers.models import Prospectivebuyer
+from pictures.models import Picture
+
 
 
 class PropertySerializer(serializers.ModelSerializer):
@@ -7,6 +11,9 @@ class PropertySerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    sold_id = serializers.SerializerMethodField()
+    prospectivebuyer_id = serializers.SerializerMethodField()
+    picture_id = serializers.SerializerMethodField()
 
 
     def validate_image(self, value):
@@ -26,6 +33,33 @@ class PropertySerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_sold_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            sold = Sold.objects.filter(
+                owner=user, property=obj
+            ).first()
+            return sold.id if sold else None
+        return None
+
+    def get_prospectivebuyer_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            prospectivebuyer = Prospectivebuyer.objects.filter(
+                owner=user, property=obj
+            ).first()
+            return prospectivebuyer.id if prospectivebuyer else None
+        return None
+
+    def get_picture_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            picture = Picture.objects.filter(
+                owner=user, property=obj
+            ).first()
+            return picture.id if picture else None
+        return None
+
     class Meta:
         model = Property
         fields = [
@@ -33,7 +67,8 @@ class PropertySerializer(serializers.ModelSerializer):
             'created_at', 'updated_at', 'title', 'description',
             'price', 'size', 'location', 'num_rooms', 'status',
             'sold_date', 'property_type', 'num_interests',
-            'image', 'image_filter'
+            'image', 'image_filter', 'sold_id', 'prospectivebuyer_id',
+            'picture_id'
         ]
 
 
