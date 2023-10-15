@@ -77,7 +77,7 @@ DEBUG = 'DEV' in os.environ
 
 
 # ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-0qerx522l2z.ws-eu105.gitpod.io']
-ALLOWED_HOSTS = ['localhost', 'the-shop2-0.herokuapp.com', '8000-danio86-theshopbackend-0qerx522l2z.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['localhost', 'the-shop2-0.herokuapp.com']
 
 
 # Application definition
