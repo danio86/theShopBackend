@@ -34,8 +34,16 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )]
+    )],
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DATETIME_FORMAT': '%d %b %Y',
 }
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -56,7 +64,7 @@ SECRET_KEY = 'django-insecure-ja=c@jfw0@r5^$_cb01nh(k+jd@b*afd)b6b$coza)8^l6&)ec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-lkqk7lppyz1.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-sl3ckfs97l7.ws-eu105.gitpod.io']
 
 
 # Application definition
