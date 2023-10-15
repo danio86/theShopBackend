@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import root_route
+from .views import root_route, logout_route
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', root_route),
+    # our logout route has to be above the default one to be matched first
+    path('dj-rest-auth/logout/', logout_route),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+
     path('', include('profiles.urls')),
     path('', include('properties.urls')),
     path('', include('inquiries.urls')),
@@ -28,7 +32,7 @@ urlpatterns = [
     path('', include('pictures.urls')),
     path('api-auth/', include('rest_framework.urls')),
 
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    # path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path(
         'dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
     ),
