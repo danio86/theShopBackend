@@ -76,8 +76,8 @@ DEBUG = 'DEV' in os.environ
 
 
 
-# ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-sl3ckfs97l7.ws-eu105.gitpod.io']
-ALLOWED_HOSTS = ['localhost', 'the-shop2-0.herokuapp.com']
+# ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-0qerx522l2z.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['localhost', 'the-shop2-0.herokuapp.com', '8000-danio86-theshopbackend-0qerx522l2z.ws-eu105.gitpod.io']
 
 
 # Application definition
@@ -102,7 +102,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
 
-    'dj_rest_auth.registration',
     'corsheaders',
 
     'profiles',
