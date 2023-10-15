@@ -1,5 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from the_shop_api.permissions import IsOwnerOrReadOnly
 from .models import Property
 from .serializers import PropertySerializer
@@ -17,13 +18,29 @@ class PropertyList(generics.ListCreateAPIView):
         inquiries_count=Count('inquiry', distinct=True)
     ).order_by('-created_at')
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    # seachbar choose from fields
+    search_fields = [
+        'owner__username',
+        'title',
+        'location',
+        'price',
+        'size',
     ]
     ordering_fields = [
         'prospectivebuyer_count',
         'inquiries_count',
         'prospectivebuyer_count__created_at',
         'inquiries_count__created_at',
+    ]
+    filterset_fields = [
+        # 'owner__followed__owner__profile',
+        # filters users by there choices (ex interessted in a house) with related name
+        'prospectivebuyers__owner__profile', 
+        'owner__profile',
     ]
 
     def perform_create(self, serializer):
