@@ -67,11 +67,12 @@ class PropertySerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
             'created_at', 'updated_at', 'title', 'description',
-            'price', 'size', 'location', 'num_rooms', 'status',
-            'sold_date', 'property_type', 'num_interests',
+            'price', 'size', 'location', 'num_rooms',
+            'sold_date', 'property_type',
             'image', 'image_filter', 'sold_id', 'prospectivebuyer_id',
             'picture_id', 'prospectivebuyer_count',
-            'inquiries_count'
+            'inquiries_count',
+            # 'status', 'num_interests'
         ]
 
 
