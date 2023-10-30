@@ -71,8 +71,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 
-# ALLOWED_HOSTS = ['yourdomain.com', '8000-danio86-theshopbackend-0qerx522l2z.ws-eu105.gitpod.io']
-# ALLOWED_HOSTS = ['localhost', 'the-shop2-0-d8de1f67b769.herokuapp.com']
 ALLOWED_HOSTS = [
     'localhost', os.environ.get('ALLOWED_HOST'),
     '8000-danio86-theshopbackend-m7cux6i0h6.us2.codeanyapp.com',
@@ -128,11 +126,19 @@ if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
         os.environ.get('CLIENT_ORIGIN')
     ]
+# if 'CLIENT_ORIGIN_DEV' in os.environ:
+#     CORS_ALLOWED_ORIGINS.append(os.environ.get('CLIENT_ORIGIN_DEV'))
+
+
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    CORS_ALLOWED_ORIGINS.append(os.environ.get('CLIENT_ORIGIN_DEV'))
+    extracted_url = re.match(r'^([^.]+)', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}.(eu|us)\d+\.codeanyapp\.com$",
+    ]
 
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
 
 
 ROOT_URLCONF = 'the_shop_api.urls'
