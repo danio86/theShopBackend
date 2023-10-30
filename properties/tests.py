@@ -16,19 +16,6 @@ class PropertyListViewTests(APITestCase):
         print(response.data)
         print(len(response.data))
 
-    # def test_logged_in_user_can_create_property(self):
-    #     self.client.login(username='dani', password='dani')
-    #     data = {
-    #         'title': 'the loft2',
-    #         'price': 10000,
-    #         'size': 127,
-    #         'num_rooms': 4,
-    #         'location': 'Austria',
-    #     }
-    #     response = self.client.post('/properties/', data)
-    #     count = Property.objects.count()
-    #     self.assertEqual(count, 1)
-    #     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_user_not_logged_in_cant_create_property(self):
         response = self.client.post('/properties/', {'title': 'a title'})

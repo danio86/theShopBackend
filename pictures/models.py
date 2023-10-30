@@ -17,19 +17,13 @@ class Picture(models.Model):
         ('lofi', 'Lo-Fi'),
         ('kelvin', 'Kelvin'),
         ('normal', 'Normal'),
-        ('nashville', 'Nashville'),
-        ('rise', 'Rise'),
-        ('toaster', 'Toaster'),
-        ('valencia', 'Valencia'),
-        ('walden', 'Walden'),
-        ('xpro2', 'X-pro II')
+       
     ]
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # pictures = models.TextField()
     pictures = models.ImageField(
         upload_to='images/', default='../default_property_rgq6aq', blank=True
     )

@@ -37,8 +37,6 @@ class PropertyList(generics.ListCreateAPIView):
         'inquiries_count__created_at',
     ]
     filterset_fields = [
-        # 'owner__followed__owner__profile',
-        # filters users by there choices (ex interessted in a house) with related name
         'prospectivebuyers__owner__profile', 
         'owner__profile',
     ]
